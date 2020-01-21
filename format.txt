@@ -1,0 +1,26 @@
+What is it?
+What is it typically used for?
+When CAN’T I use this?
+
+
+Introduction
+Assumptions
+Implementation
+Validation
+Use case
+Pitfalls
+Notes
+
+
+Once you have implemented an algorithm you can explore making improvements to the implementation. Some examples of improvements you could explore include:
+
+Experimentation: You can expose many of the micro-decisions you made in the algorithms implementation as parameters and perform studies on variations of those parameters. This can lead to new insights and disambiguation of algorithm implementations that you can share and promote.
+Optimization: You can explore opportunities to make the implementation more efficient by using tools, libraries, different languages, different data structures, patterns and internal algorithms. Knowledge you have of algorithms and data structures for classical computer science can be very beneficial in this type of work.
+Specialization: You may explore ways of making the algorithm more specific to a problem. This can be required when creating production systems and is a valuable skill. Making an algorithm more problem specific can also lead to increases in efficiency (such as running time) and efficacy (such as accuracy or other performance measures).
+Generalization: Opportunities can be created by making a specific algorithm more general. Programmers (like mathematicians) are uniquely skilled in abstraction and you may be able to see how the algorithm could be applied to more general cases of a class of problem or other problems entirely.
+Limitations
+You can learn a lot by implementing machine learning algorithms by hand, but there are also some downsides to keep in mind.
+
+Redundancy: Many algorithms already have implementations, some very robust implementations that have been used by hundreds or thousands of researchers and practitioners around the world. Your implementation may be considered redundant, a duplication of effort already invested by the community.
+Bugs: New code that has few users is more likely to have bugs, even with a skilled programmer and unit tests. Using a standard library can reduce the likelihood of having bugs in the algorithm implementation.
+Non-intuitive Leaps: Some algorithms rely on non-intuitive jumps in reasoning or logic because of the sophisticated mathematics involved. It is feasible that an implementation that does not appreciate these leaps to be limited or even incorrect.

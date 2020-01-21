@@ -15,8 +15,8 @@ Using matrix functions from Numpy library and linear algebra solution for coeffi
 
 
 **TODO:** 
-> Implement predictions
-> Refractor to fit-predict interface
-> Additonal statistics
-> Work through algebraic proof
-> Write article on Medium 
+> Implement predictions  
+> Refractor to fit-predict interface  
+> Additonal statistics  
+> Work through algebraic proof  
+> Write article on Medium  
