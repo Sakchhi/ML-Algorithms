@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn import metrics
 
 
 class LinearRegression:
@@ -22,7 +23,8 @@ class LinearRegression:
         if self.fit_intercept:
             X = self.add_constant(X)
         b = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
-        self.coefs_ = b
+        self.coefs_ = b[:-1]
+        self.intercept_ = b[-1]
         return self
 
     def predict(self, test):
@@ -33,8 +35,20 @@ class LinearRegression:
         """
         if not all(self.coefs_):
             raise ValueError("Fit the model before predicting")
-        predictions = test.dot(self.coefs_[:-1]) + self.coefs_[-1]
+        predictions = test.dot(self.coefs_) + self.intercept_
         return predictions
+
+    def score(self, actuals, predictions):
+        """
+        Returns R-squared score for the fitted model
+        :param actuals: Matrix of dependent feature
+        :param predictions: Matrix of predictions
+        :return: R-squared score
+        """
+        rss = np.square(predictions-actuals).sum()
+        tss = np.square(actuals - actuals.mean()).sum()
+        r2 = 1 - rss/tss
+        return r2
 
 
 if __name__ == '__main__':
@@ -50,3 +64,6 @@ if __name__ == '__main__':
     y_pred = linear_reg.predict(x_test)
     err = (abs(y_test - y_pred)/y_test).mean()
     print(err)
+    actual_r2 = metrics.r2_score(y_test, y_pred)
+    our_r2 = linear_reg.score(y_test, y_pred)
+    print(actual_r2, our_r2)
