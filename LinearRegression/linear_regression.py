@@ -1,13 +1,16 @@
 import numpy as np
 from sklearn import metrics
+from sklearn.preprocessing import StandardScaler
 
 
 class LinearRegression:
 
-    def __init__(self, fit_intercept=True):
+    def __init__(self, fit_intercept=True, normalize=False):
         self.coefs_ = None
         self.intercept_ = None
         self.fit_intercept = fit_intercept
+        self.normalize = normalize
+        self.scaler = StandardScaler()
 
     def add_constant(self, X):
         return np.c_[X, np.ones(X.shape[0])]
@@ -22,6 +25,8 @@ class LinearRegression:
         """
         if self.fit_intercept:
             X = self.add_constant(X)
+        if self.normalize:
+            X = self.scaler.fit_transform(X)
         b = (np.linalg.inv(X.T.dot(X)).dot(X.T)).dot(y)
         self.coefs_ = b[:-1]
         self.intercept_ = b[-1]
@@ -30,11 +35,13 @@ class LinearRegression:
     def predict(self, test):
         """
         Return predictions for fitted model
-        :param test:
-        :return:
+        :param test: numpy array of set of test features
+        :return: numpy array of predictions
         """
         if not all(self.coefs_):
             raise ValueError("Fit the model before predicting")
+        if self.normalize:
+            test = self.scaler.transform()
         predictions = test.dot(self.coefs_) + self.intercept_
         return predictions
 
